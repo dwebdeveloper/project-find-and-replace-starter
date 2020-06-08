@@ -44,7 +44,7 @@ replaceAllButton.addEventListener('click', function () {
                 eachCellText.innerHTML = replacestring
                 console.log(innerCellText, inputString)
             } else {
-                return 'NO Match'
+                return alert('NO Match')
             }
 
         }
