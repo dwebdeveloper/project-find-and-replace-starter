@@ -15,24 +15,38 @@ const rowElements = document.querySelectorAll(".row")
 // Call this function from WITHIN your row elements loop. Then you will, in turn,
 // need to loop over the resulting cell elements. But where should this whole
 // NESTED LOOP go? Think through the user's experience: when should WHAT happen? 
-function getCellElements (currentRowElement) {
+function getCellElements(currentRowElement) {
     return currentRowElement.querySelectorAll(".cell")
 }
 
 
-// YOUR CODE GOES HERE
+replaceAllButton.addEventListener('click', function () {
+    let inputString = findInput.value;
+    let replaceText = replaceInput.value;
+    //console.log(inputString + ' To be searched');
+    //console.log('To be replaced with ' + replaceText);
 
+    for (let outerArray = 0; outerArray < rowElements.length; outerArray += 1) {
+        //console.log(rowElements.length); // Here as reference for the amount of rows available
+        const currentRowElement = rowElements[outerArray] // Here to specify the rows
 
-// One last thing: dedicate very careful attention to using variables and
-// naming them accurately.
-// And when you change the value you are assigning to a variable, don't
-// forget to consider changing the name to reflect the change you made! It
-// is very easy to get confused when you are working inside NESTED LOOPS.
-// The best of us do. And unnecessary confusion during the process of 
-// developing your code means wasted time.
-//
-// The time-cost of structuring and naming things well is FAR less than the
-// time-cost of ignoring the quality and readability of your code.
-//
-// You can, of course, remove any comments in this starter project once
-// you have read them, if you prefer.
+        const cellElements = getCellElements(currentRowElement)
+        for (let innerCellArray = 0; innerCellArray < cellElements.length; innerCellArray += 1) {
+            // console.log(cellElements.length)
+            const eachCellText = cellElements[innerCellArray]// Here the value in each cell is shown
+            //console.log(eachCellText)
+            let innerCellText = eachCellText.innerHTML
+            // console.log('The value inside the innerCellText is: ' + innerCellText)
+            //console.log(innerCellText.includes(inputString))
+
+            if (innerCellText.includes(inputString)) {
+                let replacestring = innerCellText.replace(inputString, replaceText)
+                eachCellText.innerHTML = replacestring
+                console.log(innerCellText, inputString)
+            } else {
+                return 'NO Match'
+            }
+
+        }
+    }
+})
