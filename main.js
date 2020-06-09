@@ -26,14 +26,14 @@ replaceAllButton.addEventListener('click', function () {
     //console.log(inputString + ' To be searched');
     //console.log('To be replaced with ' + replaceText);
 
-    for (let outerArray = 0; outerArray < rowElements.length; outerArray += 1) {
+    for (let outerIndex = 0; outerIndex < rowElements.length; outerIndex += 1) {
         //console.log(rowElements.length); // Here as reference for the amount of rows available
-        const currentRowElement = rowElements[outerArray] // Here to specify the rows
+        const currentRowElement = rowElements[outerIndex] // Here to specify the rows
 
         const cellElements = getCellElements(currentRowElement)
-        for (let innerCellArray = 0; innerCellArray < cellElements.length; innerCellArray += 1) {
+        for (let innerIndex = 0; innerIndex < cellElements.length; innerIndex += 1) {
             // console.log(cellElements.length)
-            const eachCellText = cellElements[innerCellArray]// Here the value in each cell is shown
+            const eachCellText = cellElements[innerIndex]// Here the value in each cell is shown
             //console.log(eachCellText)
             let innerCellText = eachCellText.innerHTML
             // console.log('The value inside the innerCellText is: ' + innerCellText)
@@ -43,10 +43,7 @@ replaceAllButton.addEventListener('click', function () {
                 let replacestring = innerCellText.replace(inputString, replaceText)
                 eachCellText.innerHTML = replacestring
                 console.log(innerCellText, inputString)
-            } else {
-                return alert('NO Match')
             }
-
         }
     }
 })
